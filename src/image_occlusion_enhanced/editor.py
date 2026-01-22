@@ -121,7 +121,14 @@ class ImgOccWebView(webview.AnkiWebView):
 
 class ImgOccEdit(QDialog):
     """Main Image Occlusion Editor dialog"""
-
+    def resizeToAnkiWindow(self, scale:float=0.9):
+        """Resize dialog relative to the main Anki window"""
+        anki_size = mw.size()
+        width = int(anki_size.width() * scale)
+        height = int(anki_size.height() * scale)
+        self.resize(width, height)
+        self.move(mw.geometry().center() - self.rect().center())
+    
     def __init__(self, imgoccadd, parent):
         QDialog.__init__(self)
         mw.setupDialogGC(self)
