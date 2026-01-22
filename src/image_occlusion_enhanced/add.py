@@ -267,6 +267,8 @@ class ImgOccAdd(object):
             def onSvgEditLoaded():
                 dialog.showSvgEdit(True)
                 # TODO: find better solution
+                restoreGeom(dialog, "imgoccedit")
+                dialog.adjustSize()
                 dialog.fitImageCanvas()
                 dialog.fitImageCanvas(delay=200)
 
